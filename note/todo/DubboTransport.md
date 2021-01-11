@@ -1,0 +1,3 @@
+# Dubbo的Transporter
+
+入口在HeaderExchangeClient方法的send或者request方法

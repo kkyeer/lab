@@ -1,0 +1,3 @@
+1. 实现PropertySourceLoader
+2. 在META-INF/spring.factories里定义org.springframework.boot.env.PropertySourceLoader=com.custom.propertysourceloader
+3. ClassLoader.getResource实际上会向上调用到BootstrapClassloader的方法，which根路径为mainClass的classpath
