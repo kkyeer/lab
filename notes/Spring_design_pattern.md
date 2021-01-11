@@ -1,0 +1,1 @@
+1. Log的获取，使用Log4jAdapter调用Log4jLog类，来将Log4j的方法适配成org.apache.commons.logging.Log接口
