@@ -38,4 +38,13 @@ public class ContentOpSummary {
    public void setOpState(Map<ContentOpTypeEnum, Boolean> opState) {
       this.opState = opState;
    }
+
+   @Override
+   public String toString() {
+      return "ContentOpSummary{" +
+              "userId=" + userId +
+              ", contentId=" + contentId +
+              ", opState=" + opState +
+              '}';
+   }
 }
