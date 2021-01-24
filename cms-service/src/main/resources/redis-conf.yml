@@ -1,0 +1,6 @@
+cluster:
+  nodes:
+    - host: 'redis://home.mini:6379'
+    - host: 'redis://home.mini:6380'
+    - host: 'redis://home.mini:6381'
+  count: 3
