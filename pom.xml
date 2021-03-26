@@ -6,6 +6,7 @@
 	<artifactId>dubbo-rpc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Demo project for Spring Boot</description>
+	<packaging>pom</packaging>
 	
 	<modules>
 		<module>provider</module>
@@ -17,21 +18,30 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<spring.version>2.3.5.RELEASE</spring.version>
 	</properties>
 	
 	<dependencies>
 		<!-- Dubbo Spring Boot Starter -->
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo-spring-boot-starter</artifactId>
-			<version>2.7.5</version>
+			<artifactId>dubbo</artifactId>
+			<version>3.0.0.preview</version>
+
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-registry-nacos -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>2.1.0.RELEASE</version>
+			<version>${spring.version}</version>
 			
 			<exclusions>
 				<exclusion>
@@ -45,7 +55,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
-			<version>2.1.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		
 		
