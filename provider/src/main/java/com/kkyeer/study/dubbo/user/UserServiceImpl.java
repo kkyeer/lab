@@ -1,10 +1,7 @@
-package com.kkyeer.study.dubbo.dubbouserservice;
+package com.kkyeer.study.dubbo.user;
 
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**

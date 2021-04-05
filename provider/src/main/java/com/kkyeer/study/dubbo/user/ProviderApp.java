@@ -1,4 +1,4 @@
-package com.kkyeer.study.dubbo.dubbouserservice;
+package com.kkyeer.study.dubbo.user;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.slf4j.Logger;
