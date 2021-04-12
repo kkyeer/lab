@@ -1,6 +1,6 @@
 package com.kkyeer.study.dubboconsumer;
 
-import com.kkyeer.study.dubbo.dubbouserservice.UserService;
+import com.kkyeer.study.dubbo.user.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

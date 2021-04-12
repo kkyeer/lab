@@ -1,4 +1,4 @@
-package com.kkyeer.study.dubbo.dubbouserservice;
+package com.kkyeer.study.dubbo.user;
 
 import org.apache.dubbo.config.annotation.Service;
 
