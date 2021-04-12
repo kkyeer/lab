@@ -1,5 +1,6 @@
 package com.kkyeer.lab.shardingsphere.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,8 +12,9 @@ import java.util.Date;
  * @Modified By:
  */
 @Data
+@TableName("t_user")
 public class EUser {
-    private int id;
+    private Integer id;
     private int userId;
     private String username;
     private Date createTime;

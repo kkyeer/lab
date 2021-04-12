@@ -28,7 +28,7 @@ public class SomeController {
     @GetMapping("/hello")
     public String hello() {
         for (int i = 0; i < 10; i++) {
-            EOrder order = new EOrder();
+            EOrder order = EOrder.builder().build();
             order.setId(i);
             order.setOrderId(1000 + i);
             order.setUserId(2000 + i);
