@@ -7,6 +7,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Author: kkyeer
  * @Description: UserService
@@ -21,6 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String hello(String source) {
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "Hi " + source + ", back from:" + port;
     }
 }
