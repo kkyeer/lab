@@ -1,12 +1,16 @@
 package com.kkyeer.study.spring.webmvc;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import sun.awt.geom.AreaOp;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -20,7 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api")
-public class SomeController {
+public class SomeController  {
     @Value("${a}")
     private String a;
 
