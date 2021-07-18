@@ -91,4 +91,17 @@ public class SpringConfig implements WebMvcConfigurer {
     public String swarm(){
         return "swarm";
     }
+
+    /**
+     * 在没有指定Bean名的情况下，会使用方法名作为Bean名，同一个Bean名不能注册两个Bean
+     */
+    @Bean
+    public ResultJavaBean someBeanWithoutSpecificName(){
+        return new ResultJavaBean(999,"这是一个在定义的时候没有显式指定名称的Bean");
+    }
+
+    @Bean("randomJavaBean836")
+    public ResultJavaBean beanWithSpecificName(){
+        return new ResultJavaBean(999,"这是一个在定义的时候指定名称为beanWithSpecificName的Bean");
+    }
 }
