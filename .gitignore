@@ -130,5 +130,4 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 
-/.idea/
-/StudySpring.iml
+/.idea/*
