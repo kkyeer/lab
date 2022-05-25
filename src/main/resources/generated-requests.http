@@ -1,0 +1,11 @@
+### 消耗大量资源
+GET http://localhost:8080/oom
+
+### 消耗少量资源，达到临界点
+GET http://localhost:8080/consume/160
+
+### 超过临界点,造成OOM
+GET http://localhost:8080/consume/10
+
+### 再次调用任何请求,都有可能导致Tomcat的Acceptor,CatalinaUtils崩溃
+GET http://localhost:8080/hello
