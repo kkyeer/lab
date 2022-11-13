@@ -1,7 +1,9 @@
 package com.kkyeer.study.spring;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @Author: kkyeer
@@ -10,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Modified By:
  */
 @SpringBootApplication
+@MapperScan
+@EnableTransactionManagement
 public class SpringExperimentApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringExperimentApplication.class, args);
