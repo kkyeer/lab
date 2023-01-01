@@ -29,40 +29,26 @@ public class DemoController {
     @Lazy
     private DemoController demoController;
 
-
-    @GetMapping("/ping")
-    public String pingPong() {
-        return "pong";
-    }
-
-
-    @GetMapping("/txSuccess")
-    @Transactional
-    public String txTest() throws Exception {
-        TxTestPO po = this.generateNew();
-        System.out.println("some other operation");
-        mockUpdateSuccess(po);
-        return "ok";
-    }
-
     @GetMapping("/failByInnerInvoke")
-    @Transactional
     public String failByInnerInvoke() throws Exception {
-        TxTestPO po = generateNew();
-        System.out.println("some other operation");
-        mockUpdateFail(po);
+        myControllerLogic();
         return "fail";
     }
 
     @GetMapping("/successByBeanInjection")
-    @Transactional
     public String successByBeanInjection() throws Exception {
-        TxTestPO po = demoController.generateNew();
-        System.out.println("some other operation");
-        demoController.mockUpdateFail(po);
-        return "fail";
+        demoController.myControllerLogic();
+        return "success";
     }
 
+    @Transactional
+    public void myControllerLogic() throws Exception {
+        TxTestPO po = generateNew();
+        System.out.println("some other operation");
+        mockUpdateFail(po);
+    }
+
+    @Transactional
     public TxTestPO generateNew(){
         TxTestPO txTestPO = new TxTestPO();
         txTestPO.setUpdateTime(LocalDateTime.now());
@@ -75,10 +61,10 @@ public class DemoController {
         txTestPO.setVersion(2);
         myService.tryUpdate(txTestPO);
     }
-
+    @Transactional
     public void mockUpdateFail(TxTestPO txTestPO) throws Exception {
         System.out.println("some other operation");
         txTestPO.setVersion(2);
-        myService.mockUpdateFail(txTestPO);
+        myService.innerMockUpdateFail(txTestPO);
     }
 }

@@ -25,10 +25,11 @@ public class MyService extends ServiceImpl<TxTestMapper,TxTestPO> implements ISe
         updateById(txTestPO);
     }
 
-    public void mockUpdateFail(TxTestPO txTestPO) throws Exception {
+    public void innerMockUpdateFail(TxTestPO txTestPO) throws Exception {
         if (Objects.isNull(txTestPO.getId())) {
             throw new Exception("error update,must specify id");
         }
         updateById(txTestPO);
+        throw new Exception("Mock fail");
     }
 }
