@@ -23,6 +23,6 @@ public class TryToOOMController {
             System.out.println(i);
         }
         Thread.sleep(1000000000);
-        System.out.println(holders.length);
+        System.out.println(holders[0]);
     }
 }
