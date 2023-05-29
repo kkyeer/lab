@@ -23,6 +23,8 @@ public class MybatisConfig {
     @Bean
     public SqlSessionTemplate ckSqlSessionTemplate(ClickHouseDataSource clickHouseDataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        // 如果需要使用MybatisPlus自动生成的BaseMapper的方法，需要使用下面的代码来初始化FactoryBean
+        // MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(clickHouseDataSource);
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         return new SqlSessionTemplate(sqlSessionFactory);
@@ -32,6 +34,8 @@ public class MybatisConfig {
     @Bean
     public SqlSessionTemplate mysqlSqlSessionTemplate(MySQLDataSource clickHouseDataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        // 如果需要使用MybatisPlus自动生成的BaseMapper的方法，需要使用下面的代码来初始化FactoryBean
+        // MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(clickHouseDataSource);
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         return new SqlSessionTemplate(sqlSessionFactory);
