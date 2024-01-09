@@ -41,7 +41,7 @@ public class DemoController {
         return "success";
     }
 
-    @Transactional
+//    @Transactional
     public void myControllerLogic() throws Exception {
         TxTestPO po = generateNew();
         System.out.println("some other operation");
@@ -52,7 +52,7 @@ public class DemoController {
     public TxTestPO generateNew(){
         TxTestPO txTestPO = new TxTestPO();
         txTestPO.setUpdateTime(LocalDateTime.now());
-        myService.save(txTestPO);
+        myService.trySave(txTestPO);
         return txTestPO;
     }
 
