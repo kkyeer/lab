@@ -80,7 +80,8 @@
 			<resource>
 				<directory>src/main/resources/</directory>
 				<includes>
-					<include>*</include>
+					<include>**/*</include>
+					<include>mapper/*</include>
 				</includes>
 			</resource>
 		</resources>

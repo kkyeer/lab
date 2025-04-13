@@ -58,6 +58,11 @@ public class MyService extends ServiceImpl<TxTestMapper,TxTestPO> implements ISe
         long start = System.currentTimeMillis();
         baseMapper.oneSQL(list);
         System.out.println("oneSQL cost:" + (System.currentTimeMillis() - start));
+
+        list = genList();
+        start = System.currentTimeMillis();
+        baseMapper.insertBatchSomeColumn(list);
+        System.out.println("insertBatchSomeColumn cost:" + (System.currentTimeMillis() - start));
         start = System.currentTimeMillis();
         list = genList();
         saveBatch(list);

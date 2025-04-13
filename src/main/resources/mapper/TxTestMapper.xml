@@ -6,10 +6,10 @@
 
     <!-- 新增批量插入语句 -->
     <insert id="oneSQL">
-        INSERT INTO tx_test (version, create_time)
+        INSERT INTO tx_test (version, update_time)
         VALUES
         <foreach collection="list" item="item" separator=",">
-            (#{item.version}, #{item.create_time})
+            (#{item.version}, #{item.updateTime})
         </foreach>
     </insert>
 </mapper>

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import java.util.Collection;
+
 /**
  * @Author: kkyeer
  * @Description:
@@ -14,6 +16,6 @@ import java.util.List;
  */
 @Repository
 public interface TxTestMapper extends BaseMapper<TxTestPO> {
-
+    Integer insertBatchSomeColumn(Collection<TxTestPO> entityList);
     void oneSQL(List<TxTestPO> list);
 }
