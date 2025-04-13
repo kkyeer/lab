@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -47,5 +50,35 @@ public class MyService extends ServiceImpl<TxTestMapper,TxTestPO> implements ISe
         }
         updateById(txTestPO);
         throw new Exception("Mock fail");
+    }
+
+    public void testSaveBatch() {
+        List<TxTestPO> list;
+        list = genList();
+        long start = System.currentTimeMillis();
+        baseMapper.oneSQL(list);
+        System.out.println("oneSQL cost:" + (System.currentTimeMillis() - start));
+        start = System.currentTimeMillis();
+        list = genList();
+        saveBatch(list);
+        System.out.println("saveBatch cost:" + (System.currentTimeMillis() - start));
+        list = genList();
+        start = System.currentTimeMillis();
+        for (TxTestPO txTestPO : list) {
+            save(txTestPO);
+        }
+        System.out.println("save for in cost:" + (System.currentTimeMillis() - start));
+    }
+
+    private static List<TxTestPO> genList() {
+        List<TxTestPO> list;
+        list = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            TxTestPO txTestPO = new TxTestPO();
+            txTestPO.setVersion(0);
+            txTestPO.setUpdateTime(LocalDateTime.now());
+            list.add(txTestPO);
+        }
+        return list;
     }
 }

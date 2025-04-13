@@ -1,5 +1,6 @@
 package com.kkyeer.study.spring;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @TableName("tx_test")
 @Data
 public class TxTestPO {
+    @TableField("id")
     private Long id;
     private Integer version;
     private LocalDateTime updateTime;

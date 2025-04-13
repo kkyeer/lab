@@ -67,4 +67,9 @@ public class DemoController {
         txTestPO.setVersion(2);
         myService.innerMockUpdateFail(txTestPO);
     }
+
+    @GetMapping("/testSaveBatch")
+    public void testSaveBatch(){
+        myService.testSaveBatch();
+    }
 }

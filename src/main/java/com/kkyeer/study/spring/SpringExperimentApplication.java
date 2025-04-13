@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Date:Created in 下午9:57 2022/11/12
  * @Modified By:
  */
-@SpringBootApplication
-@MapperScan
+@SpringBootApplication(scanBasePackages = {"com.kkyeer.study.spring"})
+@MapperScan(basePackages = {"com.kkyeer.study.spring.dao"})
 @EnableTransactionManagement
 public class SpringExperimentApplication {
     public static void main(String[] args) {

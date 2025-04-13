@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.kkyeer.study.spring.TxTestPO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Author: kkyeer
  * @Description:
@@ -13,4 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TxTestMapper extends BaseMapper<TxTestPO> {
 
+    void oneSQL(List<TxTestPO> list);
 }
