@@ -1,4 +1,5 @@
 package com.kkyeer.study.spring.mockito;
+import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatcher;
 import org.mockito.InOrder;
 
@@ -6,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static org.mockito.AdditionalAnswers.delegatesTo;
 import static org.mockito.Mockito.*;
 /**
  * @Author: kkyeer
@@ -20,6 +22,92 @@ public class LMockitoHelloWorld {
 //        stubListArgumentMatchers();
 //        verifyMethodInvokeTimes();
 //        orderedVerify();
+//        iterated();
+//        mockVoid();
+//        mockVsSpy();
+//        retSmartNulls();
+//        argCaptor();
+        lDelegateTo();
+    }
+
+    private static void lDelegateTo() {
+        List realList = new ArrayList();
+        realList.add("first");
+        realList.add("second");
+        List mockList = mock(List.class, delegatesTo(realList));
+
+        // 报错：模拟list.get(1)返回"mock"
+//        when(mockList.get(1)).thenReturn("mock");
+        doReturn("mock").when(mockList).get(1);
+
+        System.out.println(mockList.get(1));
+        System.out.println(mockList.size());
+        realList.add("third");
+//        3
+        System.out.println(mockList.size());
+    }
+
+    private static void argCaptor() {
+        List mockList = mock(List.class);
+        ArgumentCaptor<Integer> argumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        // null
+        System.out.println(mockList.get(100));
+        verify(mockList).get(argumentCaptor.capture());
+        // 100
+        System.out.println(argumentCaptor.getValue());
+    }
+
+    private static void retSmartNulls() {
+        List list = mock(List.class, RETURNS_SMART_NULLS);
+        System.out.println(list.get(0).toString());
+    }
+
+    private static void mockVsSpy() {
+        List normalList = new ArrayList();
+        normalList.add("first");
+        List mockList = mock(List.class);
+        List spyList = spy(normalList);
+
+        mockList.add("once");
+        // 0
+        System.out.println(mockList.size());
+
+        spyList.add("once");
+        // 2 -- spy对象继承了原对象的初始状态
+        System.out.println(spyList.size());
+        // 1
+        System.out.println(normalList.size());
+        normalList.add("twice");
+        // 2---normalList的后续变化不影响spy对象
+        System.out.println(spyList.size());
+        // spy对象允许部分mock
+        doReturn(100).when(spyList).size();
+        System.out.println(spyList.size());
+    }
+
+    private static void mockVoid() {
+        List list = mock(List.class);
+        doThrow(new RuntimeException()).when(list).clear();
+
+        list.clear();
+    }
+
+    private static void iterated() {
+        List<String> mockList = mock(List.class);
+        when(mockList.get(1))
+                .thenReturn("first")
+                .thenReturn("second")
+                .thenThrow(new IndexOutOfBoundsException())
+                .thenReturn("fourth");
+        System.out.println(mockList.get(1));
+        System.out.println(mockList.get(1));
+        try {
+            System.out.println(mockList.get(1));
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        System.out.println(mockList.get(1));
+        System.out.println(mockList.get(1));
     }
 
     private static void orderedVerify() {

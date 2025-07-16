@@ -15,4 +15,8 @@ public class DemoService {
     public String getInfo(){
         return "hello world";
     }
+
+    public void printHello(){
+        System.out.println("hello world");
+    }
 }
